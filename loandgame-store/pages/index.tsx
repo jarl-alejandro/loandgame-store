@@ -3,14 +3,56 @@ import clientPromise from '../lib/mongodb'
 import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 
 type ConnectionStatus = {
-  isConnected: boolean
+  isConnected: boolean,
+  movies: Movie[]
 }
 
-export const getServerSideProps: GetServerSideProps<
-  ConnectionStatus
-> = async () => {
+interface Movie {
+  _id: string,
+  name: string,
+  description: string
+}
+
+export const getServerSideProps: GetServerSideProps<ConnectionStatus> = async () => {
   try {
-    await clientPromise
+    const client = await clientPromise
+    const db = client.db("stores")
+
+    /*
+    await db
+        .collection("movies")
+        .insertMany([
+          {
+            name: "Pulp Fiction (1994)",
+            description:  "Dirigida por Quentin Tarantino, esta película es un viaje no lineal a través de historias interconectadas de gángsters, violencia y humor negro en Los Ángeles.",
+          },
+          {
+            name: "El Padrino (1972)",
+            description:  "Dirigida por Francis Ford Coppola, es un épico drama criminal que sigue la vida de la familia Corleone mientras luchan por el poder en el mundo del crimen organizado.",
+          },
+          {
+            name: "Titanic (1997)",
+            description:  "Una emotiva historia de amor dirigida por James Cameron, ambientada en el trágico hundimiento del famoso barco Titanic.",
+          },
+          {
+            name: "Forrest Gump (1994)",
+            description:  "Dirigida por Robert Zemeckis, esta película cuenta la vida de Forrest Gump, un hombre con discapacidad intelectual que vive una vida extraordinaria y se convierte en testigo de momentos históricos clave.",
+          },
+          {
+            name: "Matrix (1999)",
+            description:  "Dirigida por los hermanos Wachowski, esta película de ciencia ficción sigue a Neo, un hacker que descubre que el mundo en el que vive es una simulación controlada por máquinas, lo que lo lleva a una búsqueda de la verdad y la libertad.",
+          },
+        ]);
+        */
+
+    const movies = await db
+        .collection("movies")
+        .find({})
+        .sort({ metacritic: -1 })
+        .limit(10)
+        .toArray();
+
+
     // `await clientPromise` will use the default database passed in the MONGODB_URI
     // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
     //
@@ -21,19 +63,21 @@ export const getServerSideProps: GetServerSideProps<
     // db.find({}) or any of the MongoDB Node Driver commands
 
     return {
-      props: { isConnected: true },
+      props: {
+        isConnected: true,
+        movies: JSON.parse(JSON.stringify(movies))
+      }
     }
   } catch (e) {
     console.error(e)
     return {
-      props: { isConnected: false },
+      props: { isConnected: false, movies: [] },
     }
   }
 }
 
-export default function Home({
-  isConnected,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home({ isConnected, movies }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  console.log(movies)
   return (
     <div className="container">
       <Head>
@@ -47,7 +91,19 @@ export default function Home({
         </h1>
 
         {isConnected ? (
+          <>
           <h2 className="subtitle">You are connected to MongoDB</h2>
+          <section className='grid'>
+            { movies.map((movie: Movie) => {
+              return (
+                <div key={movie._id} className='card'>
+                  <h4>{ movie.name }</h4>
+                  <p>{ movie.description }</p>
+                </div>
+              )
+            }) }
+          </section>
+          </>
         ) : (
           <h2 className="subtitle">
             You are NOT connected to MongoDB. Check the <code>README.md</code>{' '}
@@ -59,37 +115,7 @@ export default function Home({
           Get started by editing <code>pages/index.js</code>
         </p>
 
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+    
       </main>
 
       <footer>
@@ -104,6 +130,10 @@ export default function Home({
       </footer>
 
       <style jsx>{`
+        .card {
+          
+        }
+
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
