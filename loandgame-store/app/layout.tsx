@@ -25,12 +25,7 @@ export default function RootLayout({ children, }: Prop) {
     return (
       <html lang="es" className={roboto.className}>
         <body>
-          <main className={layoutStyle.container}>
-            <h1 className="text-3xl font-bold">Loandgame store</h1>
-            <div className={layoutStyle.container}>
-              { children }
-            </div>
-          </main>
+            { children }
         </body>
       </html>
     )
