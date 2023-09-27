@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react';
+import storeStyle from './stores.module.css';
+
 
 function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +21,7 @@ function MobileHeader() {
       </div>
 
       {/* Dropdown Nav */}
-      <nav className={isOpen ? 'flex' : 'hidden'} className="flex flex-col pt-4">
+      <nav className = {isOpen ?'flex flex-col pt-4' : 'flex-col pt-4 hidden'}>
         <a href="index.html" className="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
           <i className="fas fa-tachometer-alt mr-3"></i>
           Dashboard

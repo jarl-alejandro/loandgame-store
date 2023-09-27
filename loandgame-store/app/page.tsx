@@ -1,3 +1,4 @@
+
 import clientPromise from '../lib/mongodb'
 import storeStyle from './stores.module.css';
 
@@ -33,12 +34,17 @@ async function getData() {
 export default async function Home() {
   const { isConnected, stores }: Props = await getData()
   
-
   return (
     <>
       {isConnected ? (
         <>
         <h2 className="subtitle">You are connected to MongoDB</h2>
+        <button className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+                            <i className="fas fa-plus mr-3"></i>
+                            <a href="store">
+                              Mi tienda
+                            </a>
+                        </button>
         <section className={storeStyle.grid}>
           { stores.map((store: Store) => {
             return (
@@ -59,3 +65,7 @@ export default async function Home() {
     </>
   )
 }
+
+
+
+

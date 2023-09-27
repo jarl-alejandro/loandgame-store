@@ -4,6 +4,11 @@ import type { Metadata } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 
 import './globals.css';
+import Link from 'next/link'
+import MobileHeader from './page'
+
+
+
 
 interface Prop {
   children: React.ReactNode
@@ -25,7 +30,7 @@ export default function RootLayout({ children, }: Prop) {
     return (
       <html lang="es" className={roboto.className}>
         <body>
-            { children }
+            <main className="w-full flex-grow p-6">{ children }</main>
         </body>
       </html>
     )
