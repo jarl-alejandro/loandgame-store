@@ -47,6 +47,10 @@ export default function Layout({ children, }: Prop) {
                 </a>
             </aside>
 
+            <div className='relative w-full flex flex-col h-screen overflow-y-hidden'>
+                <MobileHeader />
+            </div>
+
             <div className="w-full overflow-x-hidden border-t flex flex-col">
                 <main className="w-full flex-grow p-6">{ children }</main>
             </div>
