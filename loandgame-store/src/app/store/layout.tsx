@@ -1,9 +1,9 @@
 import React from "react";
-import layoutStyle from './layout.module.css';
+//import layoutStyle from './layout.module.css';
+import '../../styles/globals.css';
 import type { Metadata } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
 
-import '../globals.css';
 import Link from 'next/link'
 import MobileHeader from './page'
 

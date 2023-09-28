@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import storeStyle from './stores.module.css';
 
-
 function MobileHeader() {
   const [isOpen, setIsOpen] = useState(false);
 
