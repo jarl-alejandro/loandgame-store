@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "src/models/game.js", "src/app/store/game/new/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

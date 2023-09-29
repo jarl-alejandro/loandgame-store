@@ -15,8 +15,8 @@ interface Prop {
 }
 
 export const metadata: Metadata = {
-  title: 'Loandgame store',
-  description: 'Crea tiendas para alquilar tus juegos',
+    title: 'Loandgame store',
+    description: 'Crea tiendas para alquilar tus juegos',
 }
 
 const roboto = Roboto_Condensed({

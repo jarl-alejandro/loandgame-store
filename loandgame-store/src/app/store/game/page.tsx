@@ -1,10 +1,25 @@
-export default function GamePage() {
-    return (
-        <>
-            <h1 className="text-3xl text-black pb-6">Game</h1>
-            <section className="w-full mt-12">
-                Game
-            </section>
-        </>
-    )
+import { dbConnect } from "../../../lib/monoose";
+import { GameCard } from "../../../components/GameCard";
+import { Navbar } from "../../../components/Navbar";
+import Game from "../../../models/game";
+
+export async function loadGames() {
+  await dbConnect();
+  const games = await Game.find();
+  return games;
+}
+
+export default async function HomePage() {
+  const games = await loadGames();
+
+  return (
+    <div>
+        <Navbar />
+        <div className="grid md:grid-cols-3 gap-2">
+        {games.map((game) => (
+            <GameCard game={game} key={game._id} />
+        ))}
+        </div>
+    </div>
+  );
 }
