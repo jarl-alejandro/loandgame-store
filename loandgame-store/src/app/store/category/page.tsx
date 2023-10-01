@@ -1,10 +1,25 @@
-export default function CategoryPage() {
-    return (
-        <>
-            <h1 className="text-3xl text-black pb-6">Category</h1>
-            <section className="w-full mt-12">
-                Category
-            </section>
-        </>
-    )
+import { dbConnect } from "../../../lib/monoose";
+import { CategoryCard } from "../../../components/CategoryCard";
+import { Navbar } from "../../../components/NavbarCrud"
+import Category from "../../../models/category";
+
+export async function loadCategorys() {
+  await dbConnect();
+  const categorys = await Category.find();
+  return categorys;
+}
+
+export default async function CategoryPage() {
+  const categorys = await loadCategorys();
+
+  return (
+    <div>
+        <Navbar datos={'category'}/>
+        <div className="gap-2">
+        {categorys.map((category) => (
+            <CategoryCard category={category} key={category._id} />
+        ))}
+        </div>
+    </div>
+  );
 }

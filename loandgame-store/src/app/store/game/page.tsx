@@ -1,6 +1,6 @@
 import { dbConnect } from "../../../lib/monoose";
 import { GameCard } from "../../../components/GameCard";
-import { Navbar } from "../../../components/Navbar";
+import { Navbar } from "../../../components/NavbarCrud";
 import Game from "../../../models/game";
 
 export async function loadGames() {
@@ -14,7 +14,7 @@ export default async function HomePage() {
 
   return (
     <div>
-        <Navbar />
+        <Navbar datos={'game'}/>
         <div className="grid md:grid-cols-3 gap-2">
         {games.map((game) => (
             <GameCard game={game} key={game._id} />

@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-, "src/models/game.js", "src/app/store/game/new/page.jsx", "src/components/GameCard.jsx", "src/components/Navbar.jsx", "src/components/SelectCategorys.jsx"  ],
+, "src/models/game.js", "src/app/store/game/new/page.jsx", "src/components/GameCard.jsx", "src/components/NavbarCrud.jsx", "src/components/SelectCategorys.jsx"  ],
   "exclude": [
     "node_modules"
   ]
