@@ -120,14 +120,14 @@ const NewGame = () => {
       <form onSubmit={handleSubmit}>
         <header className="flex justify-between">
           <h1 className="font-bold text-3xl text-slate-600">
-            {!params.id ? "Create Game" : "Update Game"}
+            {!params.id ? "Crear" : "Actualizar"}
           </h1>
           {params.id && (
             <button
               className="bg-red-500 px-3 py-1 rounded-md"
               onClick={handleDelete}
             >
-              Delete
+              Eliminar
             </button>
           )}
         </header>
@@ -164,7 +164,7 @@ const NewGame = () => {
         <SelectCategorys/>
         
         <button className="bg-green-600 text-white font-semibold px-8 py-2 rounded-lg">
-          {params.id ? "Update" : "Save"}
+          {params.id ? "Actualizar" : "Crear"}
         </button>
       </form>
     </div>

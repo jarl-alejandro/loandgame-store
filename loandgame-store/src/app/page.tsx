@@ -1,6 +1,7 @@
 
 import clientPromise from '../lib/mongodb'
 import storeStyle from '../styles/stores.module.css';
+import Link from 'next/link';
 
 interface Props {
   isConnected: boolean,
@@ -39,12 +40,10 @@ export default async function Home() {
       {isConnected ? (
         <>
           <h2 className="subtitle">You are connected to MongoDB</h2>
-          <button className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+          <Link href="store" className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
             <i className="fas fa-plus mr-3"></i>
-            <a href="store">
-              Mi tienda
-            </a>
-          </button>
+            Mi tienda
+          </Link>
           <section className={storeStyle.grid}>
             { stores.map((store: Store) => {
               return (

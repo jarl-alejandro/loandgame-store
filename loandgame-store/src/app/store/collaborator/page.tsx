@@ -1,10 +1,28 @@
-export default function CollaboratorPage() {
+import { dbConnect } from "../../../lib/monoose";
+import { Navbar } from "../../../components/NavbarCrud"
+import ComponentSchema from "../../../models/collaborator";
+import Card from '../../../components/Card'
+
+export async function loadData() {
+    await dbConnect();
+    return ComponentSchema.find();
+}
+
+export default async function Page() {
+    const data = await loadData();
+
+    // @ts-ignore
     return (
-        <>
-            <h1 className="text-3xl text-black pb-6">Collaborator</h1>
-            <section className="w-full mt-12">
-                Collaborator
-            </section>
-        </>
-    )
+        <div>
+            <Navbar datos={'collaborator'}/>
+            <div className="gap-2">
+                {data.map((item) => (
+                    <Card url={'collaborator'} id={item._id} name={item.name} key={item._id}>
+                        <p className="text-slate-300">Email: {item.email}</p>
+                        <p className="text-slate-300">Telefono: {item.phone}</p>
+                    </Card>
+                ))}
+            </div>
+        </div>
+    );
 }

@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json(categorys);
   }
 
-  export async function POST(request) {
+export async function POST(request) {
     try {
       const body = await request.json();
       const newCategory = new Category(body);
@@ -20,4 +20,4 @@ export async function GET() {
         status: 400,
       });
     }
-  }
+}
