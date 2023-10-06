@@ -1,23 +1,39 @@
+"use client";
 
-const getCategories = async () => {
-  const res = await fetch(`/api/categories`);
-  const categories = await res.json();
-  return categories;
-};
+import {useEffect, useState} from "react";
 
-const SelectCategorys=async()=>{
-  const categories = await getCategories();
-  return (
-    <div>
-      <div className="grid md:grid-cols-3 gap-2">
-        <select name="" id="" className="bg-gray-800 border-2 w-full p-4 rounded-lg my-4">
-            {categories.map((category) => (
-              <option key={category._id} value={category.name}>{category.name}</option>
-            ))}
+export function SelectCategories(props) {
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        getCategories()
+    }, []);
+
+    const getCategories = async () => {
+        const res = await fetch(`/api/categories`);
+        const data = await res.json();
+        setCategories(data);
+    };
+
+    const handleChangeCategory = (value) => {
+        props.setCategory(value.target.value)
+    }
+
+    return (
+        <div>
+          <div className="grid md:grid-cols-3 gap-2">
+            <select id="countries_disabled"
+                    value={!props.categoryId ? '' : props.categoryId}
+                    onChange={handleChangeCategory}
+                    className="bg-gray-800 border-2  my-4 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 text-slate-400 dark:focus:ring-gray-500 dark:focus:border-gray-500">
+                <option>Seleciona una categoria</option>
+                { categories.length && categories.map(item => (
+                    <option value={item._id.toString()} key={item._id}>{ item.name }</option>
+                )) }
             </select>
-      </div>
-    </div>
-  );
+          </div>
+        </div>
+      );
 }
 
-export default SelectCategorys;
+export default SelectCategories;

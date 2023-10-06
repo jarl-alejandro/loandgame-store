@@ -7,15 +7,17 @@ export async function GET(request, { params }) {
   try {
     const gameFound = await Game.findById(params.id);
 
-    if (!gameFound)
+    if (!gameFound) {
       return NextResponse.json(
-        {
-          message: "Game not found",
-        },
-        {
-          status: 404,
-        }
+          {
+            message: "Game not found",
+          },
+          {
+            status: 404,
+          }
       );
+    }
+
 
     return NextResponse.json(gameFound);
   } catch (error) {

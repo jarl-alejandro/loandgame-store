@@ -7,7 +7,9 @@ const NewGame = () => {
   const [newGame, setNewGame] = useState({
     name: "",
     developed_by: "",
-    minimum_age:""
+    minimum_age:"",
+    categoryId: "",
+    amount: ""
   });
   const params = useParams();
   const router = useRouter();
@@ -18,7 +20,13 @@ const NewGame = () => {
   const getGame = async () => {
     const res = await fetch(`/api/games/${params.id}`);
     const data = await res.json();
-    setNewGame({ name: data.name, developed_by: data.developed_by,minimum_age:data.minimum_age });
+    setNewGame({
+      name: data.name,
+      data: data.amount || 0,
+      developed_by: data.developed_by,
+      minimum_age:data.minimum_age,
+      categoryId: data.categoryId || null
+    });
   };
 
   useEffect(() => {
@@ -29,11 +37,7 @@ const NewGame = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let errs = validate();
 
-    if (Object.keys(errs).length) return setErrors(errs);
-
-    setIsSubmitting(true);
 
     if (params.id) {
       await updateGame();
@@ -108,6 +112,11 @@ const NewGame = () => {
     }
   };
 
+  const setCategory = (value) => {
+    setNewGame({ ...newGame, categoryId: value });
+  }
+
+
   return (
     <div className="min-h-[calc(100vh-7rem)] flex justify-center items-center">
       <form onSubmit={handleSubmit}>
@@ -153,7 +162,11 @@ const NewGame = () => {
           autoFocus
           className="bg-gray-800 border-2 w-full p-4 rounded-lg my-4"
           ></input>
-        
+
+        <SelectCategorys
+            setCategory={setCategory}
+            categoryId={newGame.categoryId}
+        />
         <input
           type="number"
           placeholder="Amount"
@@ -164,8 +177,6 @@ const NewGame = () => {
           className="bg-gray-800 border-2 w-full p-4 rounded-lg my-4"
           ></input>
 
-        <SelectCategorys/>
-        
         <button className="bg-green-600 text-white font-semibold px-8 py-2 rounded-lg">
           {params.id ? "Actualizar" : "Crear"}
         </button>

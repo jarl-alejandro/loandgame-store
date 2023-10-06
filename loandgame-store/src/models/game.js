@@ -1,5 +1,4 @@
-
-  import { Schema, model, models } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
   const GameSchema = new Schema(
     {
@@ -10,7 +9,7 @@
             trim:true,
             minlength: [3, "name cannot be grater than 3 characters"],
             maxlength: [100, "name cannot be grater than 100 characters"],
-        }, 
+        },
         developed_by:{
             type:String,
             requiered:[true,'El campo "desarrollado por:" es requerido.'],
@@ -18,7 +17,7 @@
             minlength: [3, "name cannot be grater than 3 characters"],
             maxlength: [150, "name cannot be grater than 150 characters"],
         },
-        category:{
+        categoryId:{
           type:String
         },
         minimum_age:{

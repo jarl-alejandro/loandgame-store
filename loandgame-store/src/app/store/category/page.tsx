@@ -5,8 +5,7 @@ import Category from "../../../models/category";
 
 export async function loadCategorys() {
   await dbConnect();
-  const categorys = await Category.find();
-  return categorys;
+  return Category.find();
 }
 
 export default async function CategoryPage() {
