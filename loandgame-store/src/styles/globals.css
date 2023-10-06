@@ -21,3 +21,10 @@ body {
 .active-nav-link { background: #1947ee; }
 .nav-item:hover { background: #1947ee; }
 .account-link:hover { background: #3d68ff; }
+
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 20rem calc(100% - 20rem - 2rem);
+  column-gap: 2rem;
+}

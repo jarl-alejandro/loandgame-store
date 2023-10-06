@@ -9,21 +9,10 @@ interface Prop {
   children: React.ReactNode
 }
 
-export const metadata: Metadata = {
-    title: 'Loandgame store',
-    description: 'Crea tiendas para alquilar tus juegos',
-}
-
-const roboto = Roboto_Condensed({
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  display: 'optional',
-});
 
 export default function RootLayout({ children, }: Prop) {
     return (
-      <html lang="es" className={roboto.className}>
+      <html lang="es">
         <body>
             <section className="bg-gray-100 font-family-karla flex">
                 <aside className="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">

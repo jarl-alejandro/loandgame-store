@@ -14,7 +14,7 @@ export default async function CategoryPage() {
 
   return (
     <div>
-        <Navbar datos={'category'}/>
+        <Navbar  datos={'category'}/>
         <div className="gap-2">
         {categorys.map((category) => (
             <CategoryCard category={category} key={category._id} />

@@ -23,7 +23,7 @@ export default function RootLayout({ children, }: Prop) {
     return (
       <html lang="es" className={roboto.className}>
         <body>
-            <main className="w-full flex-grow p-6">{ children }</main>
+            <main className="w-full flex-grow">{ children }</main>
         </body>
       </html>
     )

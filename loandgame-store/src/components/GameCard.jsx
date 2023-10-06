@@ -4,7 +4,7 @@ export function GameCard({ game }) {
   return (
     <Link href={`/store/game/${game._id}`}>
       <div className="bg-gray-800 p-10 text-white rounded-md hover:cursor-pointer hover:bg-gray-700">
-        <h1 className="text-2xl font-bold">{game.name}</h1>
+        <h1 className="text-2xl font-bold">{game.title}</h1>
 
         <p className="text-slate-300">
             <span className="mr-1">Creado por:</span>

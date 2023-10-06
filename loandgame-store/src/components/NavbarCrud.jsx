@@ -8,7 +8,7 @@ export const Navbar = ({datos}) => {
                 <ul className="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
                     <li>
                         <Link href={`/store/${datos}/new`} className="text-gray-300 dark:text-white hover:underline" aria-current="page">
-                            <h1 className="text-2xl font-bold">New {datos}</h1>
+                            <h1 className="text-2xl font-bold">Agregar</h1>
                         </Link>
                     </li>
                 </ul>

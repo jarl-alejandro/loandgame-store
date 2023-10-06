@@ -14,10 +14,10 @@ export default async function StudyPage() {
 
   return (
     <div>
-        <Navbar datos={'category'}/>
+        <Navbar datos={'study'}/>
         <div className="gap-2">
         {studies.map((study) => (
-            <StudyCard category={study} key={study._id} />
+            <StudyCard study={study} key={study._id} />
         ))}
         </div>
     </div>

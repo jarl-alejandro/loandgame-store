@@ -1,6 +1,7 @@
 
 import clientPromise from '../lib/mongodb'
 import storeStyle from '../styles/stores.module.css';
+import Link from 'next/link';
 
 interface Props {
   isConnected: boolean,
@@ -39,7 +40,6 @@ export default async function Home() {
       {isConnected ? (
         <>
           <h2 className="subtitle">You are connected to MongoDB</h2>
-
             { stores.map((store: Store) => {
               return (
                 <div key={store._id} className={storeStyle.card}>
