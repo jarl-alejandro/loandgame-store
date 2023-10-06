@@ -108,13 +108,6 @@ const NewGame = () => {
     }
   };
 
-  
-  const getCategorys = async () => {
-    const res = await fetch(`/api/categorys`);
-    const categorys = await res.json();
-    return categorys;
-  };
-
   return (
     <div className="min-h-[calc(100vh-7rem)] flex justify-center items-center">
       <form onSubmit={handleSubmit}>
@@ -161,6 +154,16 @@ const NewGame = () => {
           className="bg-gray-800 border-2 w-full p-4 rounded-lg my-4"
           ></input>
         
+        <input
+          type="number"
+          placeholder="Amount"
+          name="amount"
+          onChange={handleChange}
+          value={newGame.amount}
+          autoFocus
+          className="bg-gray-800 border-2 w-full p-4 rounded-lg my-4"
+          ></input>
+
         <SelectCategorys/>
         
         <button className="bg-green-600 text-white font-semibold px-8 py-2 rounded-lg">

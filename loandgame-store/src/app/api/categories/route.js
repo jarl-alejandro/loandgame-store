@@ -5,8 +5,8 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
     await dbConnect();
-    const categorys = await Category.find();
-    return NextResponse.json(categorys);
+    const categories = await Category.find();
+    return NextResponse.json(categories);
   }
 
   export async function POST(request) {

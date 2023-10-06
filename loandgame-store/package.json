@@ -6,12 +6,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "mongodb": "^4.8.1",
     "mongoose": "^7.5.3",
     "next": "latest",
     "queue-microtask": "^1.2.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.38.1",

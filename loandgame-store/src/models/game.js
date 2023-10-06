@@ -3,7 +3,7 @@
 
   const GameSchema = new Schema(
     {
-        name:{
+        title:{
             type:String,
             requiered:[true,'El campo "nombre" es requerido.'],
             unique:true,
@@ -18,10 +18,20 @@
             minlength: [3, "name cannot be grater than 3 characters"],
             maxlength: [150, "name cannot be grater than 150 characters"],
         },
+        category:{
+          type:String
+        },
         minimum_age:{
             type:Number,
             requiered:[true,'El campo "edad minima" es requerida.']
-        }
+        },
+        library:{
+          type:String
+        },
+        amount:{
+          type:Number,
+          requiered:[true,'El campo "edad minima" es requerida.']
+      }
     },
     {
       timestamps: true,

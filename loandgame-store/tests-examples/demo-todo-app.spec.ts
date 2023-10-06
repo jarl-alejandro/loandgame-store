@@ -83,7 +83,7 @@ test.describe('Mark all as completed', () => {
     // Complete all todos.
     await page.getByLabel('Mark all as complete').check();
 
-    // Ensure all todos have 'completed' class.
+    // Ensure all todos have 'completed' className.
     await expect(page.getByTestId('todo-item')).toHaveClass(['completed', 'completed', 'completed']);
     await checkNumberOfCompletedTodosInLocalStorage(page, 3);
   });
@@ -141,7 +141,7 @@ test.describe('Item', () => {
     await expect(secondTodo).not.toHaveClass('completed');
     await secondTodo.getByRole('checkbox').check();
 
-    // Assert completed class.
+    // Assert completed className.
     await expect(firstTodo).toHaveClass('completed');
     await expect(secondTodo).toHaveClass('completed');
   });

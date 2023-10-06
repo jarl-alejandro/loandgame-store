@@ -1,11 +1,20 @@
 
-export function SelectCategorys(){
+const getCategories = async () => {
+  const res = await fetch(`/api/categories`);
+  const categories = await res.json();
+  return categories;
+};
+
+const SelectCategorys=async()=>{
+  const categories = await getCategories();
   return (
     <div>
       <div className="grid md:grid-cols-3 gap-2">
-        <select id="countries_disabled" className="bg-gray-800 border-2  my-4 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 text-slate-400 dark:focus:ring-gray-500 dark:focus:border-gray-500">
-            <option value="222">categoria 1</option>
-        </select>
+        <select name="" id="" className="bg-gray-800 border-2 w-full p-4 rounded-lg my-4">
+            {categories.map((category) => (
+              <option key={category._id} value={category.name}>{category.name}</option>
+            ))}
+            </select>
       </div>
     </div>
   );
