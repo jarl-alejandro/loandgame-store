@@ -11,18 +11,19 @@ import {
   MdGames,
   MdCategory,
   MdOutlineApartment,
-  
-  
+
+
   MdOutlineAnalytics,
   MdOutlineIntegrationInstructions,
   MdOutlineMoreHoriz,
   MdOutlineSettings,
-  MdOutlineLogout,
+  MdOutlineLogout, MdPersonalInjury,
 } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { FaRegComments } from "react-icons/fa";
 import { BiMessageSquareDots } from "react-icons/bi";
 import Link from "next/link";
+import LinkActive from "./LinkActive";
 
 function SideNavbar() {
   return (
@@ -41,103 +42,62 @@ function SideNavbar() {
               LOAND GAME STORE
             </h1>
 
-            {/* profile  */}
-            <div className=" my-4 border-b border-gray-100 pb-4">
-             
-              <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <CgProfile className="text-2xl text-gray-600 group-hover:text-white " />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                  <Link href="/store/profile">
-                  Profile
-                  </Link>
-                </h3>
-              </div>
-
-            </div>
-
             {/* store  */}
             <div className=" my-4 border-b border-gray-100 pb-4">
-
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <MdOutlineSpaceDashboard className="text-2xl text-gray-600 group-hover:text-white " />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                  <Link href="/store/dashboard">
-                  Dashboard
-                  </Link>
-                </h3>
-              </div>
-
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <MdPerson className="text-2xl text-gray-600 group-hover:text-white " />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                  <Link href="/store/customer">
-                  Customer
-                  </Link>
-                </h3>
-              </div>
-
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <MdPendingActions className="text-2xl text-gray-600 group-hover:text-white " />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                  <Link href="/store/loan">
-                  Loans
-                  </Link>
-                </h3>
-              </div>
+              <LinkActive
+                  title="Customer"
+                  url="/store/customer"
+                  icon={
+                    <MdPerson className="text-2xl text-gray-600 group-hover:text-white " />
+                  }
+              />
+              <LinkActive
+                  title="Colaboradores"
+                  url="/store/collaborator"
+                  icon={
+                    <MdPersonalInjury className="text-2xl text-gray-600 group-hover:text-white " />
+                  }
+              />
 
             </div>
 
             {/* games  */}
             <div className=" my-4 border-b border-gray-100 pb-4">
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <MdGames className="text-2xl text-gray-600 group-hover:text-white " />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                  <Link href="/store/game">
-                  Games
-                  </Link>
-                </h3>
-              </div>
+              <LinkActive
+                  title="Games"
+                  url="/store/game"
+                  icon={
+                    <MdGames className="text-2xl text-gray-600 group-hover:text-white " />
+                  }
+              />
 
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <MdCategory className="text-2xl text-gray-600 group-hover:text-white " />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                  <Link href="/store/category">
-                  Categories
-                  </Link>
-                </h3>
-              </div>
-
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <MdOutlineApartment className="text-2xl text-gray-600 group-hover:text-white " />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                  <Link href="/store/study">
-                  Study
-                  </Link>
-                </h3>
-              </div>
+              <LinkActive
+                  title="Categories"
+                  url="/store/category"
+                  icon={
+                    <MdCategory className="text-2xl text-gray-600 group-hover:text-white " />
+                  }
+              />
+              <LinkActive
+                  title="Study"
+                  url="/store/study"
+                  icon={
+                    <MdOutlineApartment className="text-2xl text-gray-600 group-hover:text-white " />
+                  }
+              />
 
             </div>
-            {/* setting  */}
-            <div className=" my-4 border-b border-gray-100 pb-4">
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <MdOutlineSettings className="text-2xl text-gray-600 group-hover:text-white " />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                  <Link href="/store">
-                  Settings
-                  </Link>
-                </h3>
-              </div>
-            </div>
+
             {/* logout */}
             <div className=" my-4">
-              <div className="flex mb-2 justify-start items-center gap-4 pl-5 border border-gray-200  hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                <MdOutlineLogout className="text-2xl text-gray-600 group-hover:text-white " />
-                <h3 className="text-base text-gray-800 group-hover:text-white font-semibold ">
-                  <Link href="/">
-                    Logout
-                  </Link>
-                </h3>
-              </div>
+
+                <LinkActive
+                    title="Logout"
+                    url="/"
+                    icon={
+                        <MdOutlineLogout className="text-2xl text-gray-600 group-hover:text-white " />
+                    }
+                />
             </div>
           </div>
         </div>

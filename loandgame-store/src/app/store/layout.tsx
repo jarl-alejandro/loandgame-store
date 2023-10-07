@@ -1,8 +1,5 @@
 import React from "react";
-import '../../styles/globals.css';
 import SideNavbar from "../../components/SideNavbar";
-
-import Link from 'next/link'
 
 
 

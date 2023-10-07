@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React from 'react';
-import ActiveLink from './ActiveLink';
+import OlderActiveLink from './OlderActiveLink';
 
 export default function AsideMenu() {
     return (
@@ -14,12 +14,12 @@ export default function AsideMenu() {
                 </button>
             </div>
             <nav className="text-white text-base font-semibold pt-3">
-                <ActiveLink url="/store/game" title="Juegos" icon="fas fa-tachometer-alt mr-3" />
-                <ActiveLink url="/store/customer" title="Cliente" icon="fas fa-sticky-note mr-3" />
-                <ActiveLink url="/store/loan" title="Préstamo" icon="fas fa-table mr-3" />
-                <ActiveLink url="/store/study" title="Estudio" icon="fas fa-align-left mr-3" />
-                <ActiveLink url="/store/collaborator" title="Colaboradores" icon="fas fa-tablet-alt mr-3" />
-                <ActiveLink url="/store/category" title="Categoria" icon="fas fa-calendar mr-3" />
+                <OlderActiveLink url="/store/game" title="Juegos" icon="fas fa-tachometer-alt mr-3" />
+                <OlderActiveLink url="/store/customer" title="Cliente" icon="fas fa-sticky-note mr-3" />
+                <OlderActiveLink url="/store/loan" title="Préstamo" icon="fas fa-table mr-3" />
+                <OlderActiveLink url="/store/study" title="Estudio" icon="fas fa-align-left mr-3" />
+                <OlderActiveLink url="/store/collaborator" title="Colaboradores" icon="fas fa-tablet-alt mr-3" />
+                <OlderActiveLink url="/store/category" title="Categoria" icon="fas fa-calendar mr-3" />
             </nav>
 
             <Link href="/"

@@ -1,7 +1,7 @@
-import '../styles/globals.css';
 import React from "react";
 import type { Metadata } from 'next';
 import { Roboto_Condensed } from 'next/font/google';
+import '../styles/globals.css';
 
 interface Prop {
   children: React.ReactNode

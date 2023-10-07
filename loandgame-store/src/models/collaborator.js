@@ -5,6 +5,7 @@ const schema = new Schema(
     name: { type: String },
     phone: { type: String },
     email: { type: String },
+    password: { type: String },
 },
 {
   timestamps: true,

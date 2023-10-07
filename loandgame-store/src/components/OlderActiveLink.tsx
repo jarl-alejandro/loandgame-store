@@ -10,7 +10,7 @@ interface Prop {
     icon: string;
 }
 
-export default function ActiveLink(props: Prop){
+export default function OlderActiveLink(props: Prop){
     const pathname = usePathname()
     const activeLink = pathname === props.url ? "active-nav-link" : "";
 

@@ -4,9 +4,11 @@ import { useRouter, useParams } from "next/navigation";
 
 const COMPONENT = 'collaborator';
 const fields = [
-  { code: 'name', label: 'Nombre' },
-  { code: 'phone', label: 'Telefono' },
-  { code: 'email', label: 'Email' },
+  { code: 'name', label: 'Nombre', type: "text" },
+  { code: 'phone', label: 'Telefono', type: "text" },
+  { code: 'email', label: 'Email', type: "email" },
+  { code: 'password', label: 'Contraseña', type: "password" },
+
 ]
 
 const initialValues = {};
@@ -156,7 +158,7 @@ export default function NewData () {
             return (
                 <input
                     key={field.code}
-                    type="text"
+                    type={field.type}
                     placeholder={field.label}
                     name={ field.code }
                     onChange={handleChange}
