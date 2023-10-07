@@ -7,7 +7,7 @@ import bcrypt from "bcrypt";
 export async function GET() {
     await dbConnect();
     try {
-      const data = await ComponentSchema.find();
+      const data = await ComponentSchema.find({ email: { $ne: 'superadmin@store.com' }});
       return NextResponse.json(data);
     } catch (e) {
       return NextResponse.json([]);

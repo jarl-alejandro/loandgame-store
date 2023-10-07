@@ -5,7 +5,7 @@ import Card from '../../../components/Card'
 
 export async function loadData() {
     await dbConnect();
-    return ComponentSchema.find();
+    return ComponentSchema.find({ email: { $ne: 'superadmin@store.com' }});
 }
 
 export default async function Page() {
